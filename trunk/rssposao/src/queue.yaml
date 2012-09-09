@@ -1,0 +1,9 @@
+queue:
+- name: default
+  rate: 5/s
+  
+- name: bitly
+  rate: 5/s
+  
+- name: twitter
+  rate: 5/s

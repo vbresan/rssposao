@@ -1,0 +1,72 @@
+application: rssposao
+version: 14
+runtime: python
+api_version: 1
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?.*/CVS/.*
+- ^(.*/)?\..*
+- ^(.*/)?.*\.bak$
+
+
+handlers:
+- url: /twitter/admin/createFeedURLs
+  script: /twitter/admin/createFeedURLs.py
+  login: admin
+  
+- url: /twitter/fetchAll
+  script: /twitter/fetchAll.py
+  login: admin
+  
+- url: /twitter/fetchFeed
+  script: /twitter/fetchFeed.py
+  login: admin
+  
+- url: /twitter/shortenURL
+  script: /twitter/shortenURL.py
+  login: admin
+  
+- url: /twitter/tweet
+  script: /twitter/tweet.py
+  login: admin
+
+- url: /rep/?
+  script: rep.py
+  
+- url: /biramkarijeru/cleaner
+  script: biramkarijeru/cleaner.py
+  login: admin
+  
+- url: /biramkarijeru/scraper
+  script: biramkarijeru/scraper.py
+  login: admin
+    
+- url: /biramkarijeru/?
+  script: biramkarijeru/rss.py
+  
+- url: /
+  static_files: index.html
+  upload: index.html
+  
+- url: /css/(.*)
+  static_files: css/\1
+  upload: css/(.*) 
+
+- url: /img/(.*)
+  static_files: img/\1
+  upload: img/(.*)
+  
+- url: /
+  static_files: sitemap.xml
+  upload: sitemap.xml    
+    
+- url: /.*
+  script: rssposao.py

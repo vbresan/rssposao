@@ -1,0 +1,9 @@
+cron:
+- description: BiramKarijeru.hr clean
+  url: /biramkarijeru/cleaner
+  schedule: every 24 hours
+
+- description: Twitter Posao fetch feeds
+  url: /twitter/fetchAll
+  schedule: every 30 minutes
+  
